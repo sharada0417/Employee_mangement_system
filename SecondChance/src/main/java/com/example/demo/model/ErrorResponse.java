@@ -1,36 +1,30 @@
 package com.example.demo.model;
 
 public class ErrorResponse {
-	private int statusCode;
-	public int getStatusCode() {
-		return statusCode;
-	}
+    private int statusCode;
+    private String message;
 
-	public void setStatusCode(int statusCode) {
-		this.statusCode = statusCode;
-	}
+    public ErrorResponse() {}
 
-	public String getErrorMessage() {
-		return errorMessage;
-	}
+    public ErrorResponse(int statusCode, String message) {
+        this.statusCode = statusCode;
+        this.message = message;
+    }
 
-	public void setErrorMessage(String errorMessage) {
-		this.errorMessage = errorMessage;
-	}
+    // Getters and setters
+    public int getStatusCode() {
+        return statusCode;
+    }
 
-	private String errorMessage;
-	
-	public ErrorResponse() {
-	}
-	
-	public ErrorResponse(int statusCode,String errorMessage) {
-		super();
-		this.statusCode = statusCode;
-		this.errorMessage = errorMessage; 
-	}
-	
-	
-	
-	
-	
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

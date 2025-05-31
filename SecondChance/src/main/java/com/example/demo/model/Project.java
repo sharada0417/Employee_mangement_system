@@ -13,10 +13,10 @@ public class Project {
 	@Id
 	private int id;
 	private String name;
-	private long totalcost;
+	private long totalCost;
 	@ManyToMany
-	@JoinTable(name="project_assignment",
+	@JoinTable(name="project_assignments",
 	joinColumns = @JoinColumn(name="pro_id"),
 	inverseJoinColumns = @JoinColumn(name="emp_id"))
-	private List<Employee> employees;
+	private List<Employee>employees;
 }

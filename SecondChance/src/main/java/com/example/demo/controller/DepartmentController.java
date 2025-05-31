@@ -1,14 +1,9 @@
 package com.example.demo.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.model.Department;
 import com.example.demo.service.DepartmentService;
@@ -18,15 +13,17 @@ import com.example.demo.service.DepartmentService;
 public class DepartmentController {
 
     @Autowired
-    public DepartmentService service;
-
-    @GetMapping
-    public ResponseEntity<List<Department>> getDepts() {
-        return new ResponseEntity<List<Department>>(service.getDepts(), HttpStatus.OK);
-    }
+    private DepartmentService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Department> getDept(@PathVariable("id") int id) {
-        return new ResponseEntity<Department>(service.getDept(id), HttpStatus.OK);
+    public ResponseEntity<Department> getDepartmentById(@PathVariable("id") int id) {
+        Department department = service.getDept(id);
+        return new ResponseEntity<>(department, HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<String> addDepartment(@RequestBody Department department) {
+        String message = service.addDept(department);
+        return new ResponseEntity<>(message, HttpStatus.CREATED);
     }
 }
